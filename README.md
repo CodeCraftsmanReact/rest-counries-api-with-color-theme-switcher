@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution URL]()
+- Solution URL: [solution URL](https://www.frontendmentor.io/solutions/countries-api-with-coloro-theme-switcher-njyvwxMzbd)
 - Live Site URL: [live site URL](https://rest-counries-api-with-color-theme-switcher.vercel.app/)
 
 ## My process
