@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      if (localStorage.getItem('dark-mode') === 'true' || (!('dark-mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.querySelector('html').classList.add('dark');
+      } else {
+          document.querySelector('html').classList.remove('dark');
+      }
+      </script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,6 +32,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+   
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +47,32 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      const lightSwitches = document.querySelectorAll('.light-switch');
+      console.log(lightSwitches)
+      if (lightSwitches.length > 0) {
+        lightSwitches.forEach((lightSwitch, i) => {
+          if (localStorage.getItem('dark-mode') === 'true') {
+            lightSwitch.checked = true;
+          }
+          lightSwitch.addEventListener('change', () => {
+          
+            const { checked } = lightSwitch;
+            lightSwitches.forEach((el, n) => {
+              if (n !== i) {
+                el.checked = checked;
+              }
+            });
+            if (lightSwitch.checked) {
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('dark-mode', true);
+            } else {
+              document.documentElement.classList.remove('dark');
+              localStorage.setItem('dark-mode', false);
+            }
+          });
+        });
+      }
+      </script>
   </body>
 </html>
