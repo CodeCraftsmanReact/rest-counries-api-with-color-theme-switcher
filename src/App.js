@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <AppBar/>
       <div className='dark:bg-blue-background bg-gray-light min-h-screen pt-32'>
-        <div className='md:flex  md:justify-between mx-20'>
+        <div className='md:flex  md:justify-between md:mx-20'>
           <SearchBar search={search} setSearch={setSearch} />
           <RegionOptions data={data} region={region} setRegion={setRegion}/>
         </div>

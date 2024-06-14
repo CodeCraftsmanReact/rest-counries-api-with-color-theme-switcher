@@ -20,49 +20,58 @@ const CountryPage = () => {
                     <LeftArrow className="dark:stroke-white w-6 stroke-black"/>
                     <div>Back</div>
                 </div>
-            <img src={countryData.flags.svg} alt={`${countryData.name} flag`}/>
-            <div className='text-xl font-bold my-6'>{countryData.name}</div>
-            <div className='text-sm'>
-                <div>Native name: <span className='dark:text-white/40'>{countryData.nativeName}</span></div>
-                <div>Population: <span className='dark:text-white/40'>{numberWithCommas(countryData.population)}</span></div>
-                <div>Region: <span className='dark:text-white/40'>{countryData.region}</span></div>
-                <div>Sub Region: <span className='dark:text-white/40'>{countryData.subregion}</span></div>
-                <div>Capital: <span className='dark:text-white/40'>{countryData.capital}</span></div>
-                <div>Top Level Domain: <span className='dark:text-white/40'>{countryData.topLevelDomain[0]}</span></div>
-                <div className='py-4 flex gap-1'>
-                    <div className='font-semibold'>Currencies:</div>
-                    {countryData.currencies?.map((currency, index) => {
-                        return(
-                            <span className='dark:text-white/40'>{currency.name}{countryData.currencies.length === index+1 ? "" : ","}</span>
-                        )
-                    })}
+           <div className='md:flex gap-16'>
+                <img className='md:w-[40%]' src={countryData.flags.svg} alt={`${countryData.name} flag`}/>
+                <div className='md:w-full'>
+                        <div className='text-xl font-bold my-6'>{countryData.name}</div>
+                        <div className='text-sm md:flex justify-between'>
+                            <div className='md:flex flex-col justify-around'>
+                                <div>Native name: <span className='dark:text-white/40'>{countryData.nativeName}</span></div>
+                                <div>Population: <span className='dark:text-white/40'>{numberWithCommas(countryData.population)}</span></div>
+                                <div>Region: <span className='dark:text-white/40'>{countryData.region}</span></div>
+                                <div>Sub Region: <span className='dark:text-white/40'>{countryData.subregion}</span></div>
+                                <div>Capital: <span className='dark:text-white/40'>{countryData.capital}</span></div>
+                            </div>
+                            <div>
+                                <div>Top Level Domain: <span className='dark:text-white/40'>{countryData.topLevelDomain[0]}</span></div>
+                                <div className='py-4 flex gap-1'>
+                                    <div className='font-semibold'>Currencies:</div>
+                                    {countryData.currencies?.map((currency, index) => {
+                                        return(
+                                            <span className='dark:text-white/40'>{currency.name}{countryData.currencies.length === index+1 ? "" : ","}</span>
+                                        )
+                                    })}
+                                </div>
+                                <div className='py-4 flex gap-1'>
+                                    <div className='font-semibold'>Languages: </div>
+                                    {
+                                        countryData.languages?.map((language, index) => {
+                                            return(
+                                                <div className='dark:text-white/40'>{language.name}{countryData.languages.length === index + 1 ? "" : ","}</div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div className='md:mt-20 md:flex items-center'>
+                                {countryData.borders && <div className='mb-4 md:mb-0 md:whitespace-nowrap md:mr-2'>Border Countries: </div>}
+                                <div className='flex flex-wrap md:flex-nowrap md:w-full w-64 gap-2'>
+                                    {
+                                        countryData.borders?.map((border) => {
+                                            return(
+                                                <>
+                                                
+                                                    <div className='px-6 shadow-md bg-gray-light dark:dark:text-white/40 py-1 dark:bg-blue-main'>{convertBorderCode(border)}</div>
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
                 </div>
-                <div className='py-4 flex gap-1'>
-                    <div className='font-semibold'>Languages: </div>
-                    {
-                        countryData.languages?.map((language, index) => {
-                            return(
-                                <div className='dark:text-white/40'>{language.name}{countryData.languages.length === index + 1 ? "" : ","}</div>
-                            )
-                        })
-                    }
-                </div>
-                <div>
-                    {countryData.borders && <div className='mb-4'>Border Countries: </div>}
-                    <div className='flex flex-wrap w-64 gap-2'>
-                        {
-                            countryData.borders?.map((border) => {
-                                return(
-                                    <>
-                                    
-                                        <div className='px-6 shadow-md bg-gray-light dark:dark:text-white/40 py-1 dark:bg-blue-main'>{convertBorderCode(border)}</div>
-                                    </>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
+           </div>
         </div>
     </div>
   )
