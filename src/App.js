@@ -32,13 +32,17 @@ function App() {
     <div className="App">
       <AppBar/>
       <div className='dark:bg-blue-background bg-gray-light min-h-screen pt-32'>
-        <SearchBar search={search} setSearch={setSearch} />
-        <RegionOptions data={data} region={region} setRegion={setRegion}/>
-        {countries.map((country) => {
+        <div className='md:flex  md:justify-between mx-20'>
+          <SearchBar search={search} setSearch={setSearch} />
+          <RegionOptions data={data} region={region} setRegion={setRegion}/>
+        </div>
+        <div className='md:grid md:grid-cols-4 md:px-16'>
+          {countries.map((country) => {
           return(
             <CountryCard alpha2Code={country.alpha2Code} countryName={country.name} population={country.population} capital={country.capital} region={country.region} flagURL={country.flags.svg}/>
           )
         })}
+        </div>
       </div>
     </div>
   );

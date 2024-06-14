@@ -1,7 +1,7 @@
 export function SearchBar({ search, setSearch }) {
 
   return (
-    <div className='mx-6 mb-8'>
+    <div className='mx-6 md:max-w-[500px] md:mx-0 mb-8 drop-shadow-md md:flex-grow'>
       <form class="">
         <label for="default-search" class="mb-2 text-sm font-medium text-blue-text sr-only dark:text-white">Search</label>
         <div class="relative">
